@@ -1,0 +1,51 @@
+
+STEP 1
+
+USE master; 
+
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = ‘VeryStrongPassword’;
+
+GO
+
+STEP 2
+---CREATE CERTIFICATE FOR TDE
+USE master; 
+
+CREATE CERTIFICATE TDECert WITH SUBJECT= 'TDE Certification'; 
+
+GO
+
+--STEP 3
+Backup Certificate
+This is super important because if you lose your certificate, you lose your data, period.
+
+That’s why, best practice is taking backup immediately after you create it.
+
+BACKUP CERTIFICATE TDECert
+TO FILE = ‘D:\BK\MyTDECert.cer’
+WITH PRIVATE KEY
+(
+FILE = ‘D:\BK\CertPrivateKey.key’,
+ENCRYPTION BY PASSWORD = ‘VeryStrongPassword’
+);
+GO
+
+STEP 4  -Create Database Encryption Key
+
+CREATE DATABASE ENCRYPTION KEY
+WITH ALGORITHM = AES_256
+ENCRYPTION BY SERVER CERTIFICATE TDECert;
+
+STEP 5
+
+ Enable Encryption
+
+
+ALTER DATABASE TDETest SET ENCRYPTION ON;
+
+ALTER DATABASE TDETest SET ENCRYPTION SUSPEND;
+
+ALTER DATABASE TDETest SET ENCRYPTION RESUME;
+
+Database is encrypted now on the physical layer.
+

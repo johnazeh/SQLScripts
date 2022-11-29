@@ -1,0 +1,1 @@
+select* from [AdventureWorks2017].[Person].[Person]

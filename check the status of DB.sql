@@ -1,0 +1,1 @@
+select name,state_desc as status from Sys.databases

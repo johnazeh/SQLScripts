@@ -1,0 +1,1 @@
+Alter table instructor Alter column LastName varchar(40);

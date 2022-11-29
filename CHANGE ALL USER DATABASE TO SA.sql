@@ -1,0 +1,1 @@
+SELECT 'use '+QUOTENAME(name)+ ' exec sp_changedbowner @loginame =''sa'' ' FROM sys.databases AS d WHERE d.database_id>4

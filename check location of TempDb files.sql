@@ -1,0 +1,20 @@
+use TempDB
+exec sp_helpfile
+
+
+USE MASTER
+GO
+ALTER DATABASE TempDB MODIFY FILE
+(NAME = tempdev, FILENAME = 'K:\MSSQL\DATA\tempdb.mdf')
+GO
+ALTER DATABASE TempDB MODIFY FILE
+(NAME = templog, FILENAME = 'K:\MSSQL\LOGS\templog.ldf')
+GO
+
+    ALTER DATABASE tempdb MODIFY FILE ( NAME = temp2 , FILENAME = 'K:\MSSQL\DATA\temp2.ndf' )
+    ALTER DATABASE tempdb MODIFY FILE ( NAME = temp3 , FILENAME = 'K:\MSSQL\DATA\temp3.ndf' )
+    ALTER DATABASE tempdb MODIFY FILE ( NAME = temp4 , FILENAME = 'K:\MSSQL\DATA\temp4.ndf' )
+	ALTER DATABASE tempdb MODIFY FILE ( NAME = temp5 , FILENAME = 'K:\MSSQL\DATA\temp5.ndf' )
+    ALTER DATABASE tempdb MODIFY FILE ( NAME = temp6 , FILENAME = 'K:\MSSQL\DATA\temp6.ndf' )
+    ALTER DATABASE tempdb MODIFY FILE ( NAME = temp7 , FILENAME = 'K:\MSSQL\DATA\temp7.ndf' )
+	ALTER DATABASE tempdb MODIFY FILE ( NAME = temp8 , FILENAME = 'K:\MSSQL\DATA\temp8.ndf' )
